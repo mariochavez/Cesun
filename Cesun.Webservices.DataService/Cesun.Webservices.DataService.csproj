@@ -58,6 +58,9 @@
     <Compile Include="Impl\DataServiceADO.cs" />
     <Compile Include="Impl\DataServiceSubSonic.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tools\SubSonic.Core.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="db\Schema.sql" />

@@ -4,7 +4,7 @@ namespace Cesun.Webservices.Data
 {
 	public class Temblor
 	{
-		public int ID {
+		public int Id {
 			get;
 			set;
 		}

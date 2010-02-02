@@ -19,17 +19,22 @@ namespace Cesun.Webservices.UI
             temblores = dataService.GetTembloresByMagnitud(4);
 			PrintData("Subsonic", temblores);
 
-		    Temblor temblor = dataService.GetById(1);
-		    temblor.Profundidad = 10.5;
-            dataService.Save(temblor);
-            temblor = dataService.GetById(1);
-            Console.WriteLine("Temblor actualizado, profundidad {0}", temblor.Profundidad);
+		    SubsonicUpdateTemblorWithId1(dataService);
 
-            ConnectionManager.CloseAll();
+		    ConnectionManager.CloseAll();
 		    Console.ReadLine();
 		}
-		
-		static void PrintData(string source, IEnumerable<Temblor> temblores)
+
+	    static void SubsonicUpdateTemblorWithId1(IDataService dataService)
+	    {
+	        Temblor temblor = dataService.GetById(1);
+	        temblor.Profundidad = 10.5;
+	        dataService.Save(temblor);
+	        temblor = dataService.GetById(1);
+	        Console.WriteLine("Temblor actualizado, profundidad {0}", temblor.Profundidad);
+	    }
+
+	    static void PrintData(string source, IEnumerable<Temblor> temblores)
 		{
 			Console.WriteLine(String.Format("Usando {0}", source));
 			

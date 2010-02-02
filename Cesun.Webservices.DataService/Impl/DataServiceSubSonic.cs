@@ -16,7 +16,10 @@ namespace Cesun.Webservices.DataService
 		
 		public Temblor[] GetTembloresByDate(DateTime fecha)
 		{
-			return null;
+		    var temblores = from t in repository.All<Temblor>()
+		                    where t.Fecha >= fecha.Date && t.Fecha < fecha.Date.AddDays(1) 
+                            select t;
+            return temblores.ToArray();
 		}
 		
 		public Temblor[] GetTembloresByMagnitud(double magnitud)
@@ -25,27 +28,30 @@ namespace Cesun.Webservices.DataService
 		                    where t.Magnitud >= magnitud && t.Magnitud < (magnitud + 1)
 		                    select t;
 
-		    var temblor = temblores.ToArray()[0];
-		    repository.Update(temblor);
-
 			return temblores.ToArray();
 		}
 		
 		public Temblor[] GetTembloresByProfundidad(double profundidad)
 		{
-			return null;
+            var temblores = from t in repository.All<Temblor>()
+                            where t.Profundidad >= profundidad && t.Profundidad < (profundidad + 1)
+                            select t;
+
+            return temblores.ToArray();
 		}
 
 	    public Temblor GetById(int id)
 	    {
-	        var temblor = repository.Single<Temblor>(x => x.ID == id);
+	        var temblor = repository.Single<Temblor>(x => x.Id == id);
 	        return temblor;
 	    }
 
 	    public void Save(Temblor temblor)
 	    {
-            if (temblor.ID != 0)
+            if (temblor.Id != 0)
                 repository.Update(temblor);
+            else
+                repository.Add(temblor);
 	    }
 	}
 }
