@@ -35,5 +35,17 @@ namespace Cesun.Webservices.DataService
 		{
 			return null;
 		}
+
+	    public Temblor GetById(int id)
+	    {
+	        var temblor = repository.Single<Temblor>(x => x.ID == id);
+	        return temblor;
+	    }
+
+	    public void Save(Temblor temblor)
+	    {
+            if (temblor.ID != 0)
+                repository.Update(temblor);
+	    }
 	}
 }

@@ -12,12 +12,18 @@ namespace Cesun.Webservices.UI
             IDataService dataService = new DataServiceADO(ConnectionManager.GetSQLiteConnection());
             Temblor[] temblores = dataService.GetTembloresByMagnitud(5);
             PrintData("ADO", temblores);
-			
+
 		    Console.WriteLine();
             
             dataService = new DataServiceSubSonic(ConnectionManager.GetRepository());
             temblores = dataService.GetTembloresByMagnitud(4);
 			PrintData("Subsonic", temblores);
+
+		    Temblor temblor = dataService.GetById(1);
+		    temblor.Profundidad = 10.5;
+            dataService.Save(temblor);
+            temblor = dataService.GetById(1);
+            Console.WriteLine("Temblor actualizado, profundidad {0}", temblor.Profundidad);
 
             ConnectionManager.CloseAll();
 		    Console.ReadLine();

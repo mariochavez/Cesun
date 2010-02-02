@@ -8,5 +8,7 @@ namespace Cesun.Webservices.DataService
 		Temblor[] GetTembloresByDate(DateTime fecha);
 		Temblor[] GetTembloresByMagnitud(double magnitud);
 		Temblor[] GetTembloresByProfundidad(double profundidad);
+	    Temblor GetById(int id);
+	    void Save(Temblor temblor);
 	}
 }

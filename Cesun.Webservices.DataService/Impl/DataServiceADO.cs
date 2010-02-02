@@ -56,5 +56,15 @@ namespace Cesun.Webservices.DataService
 		{
 			return null;
 		}
+
+	    public Temblor GetById(int id)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void Save(Temblor temblor)
+	    {
+	        throw new NotImplementedException();
+	    }
 	}
 }
