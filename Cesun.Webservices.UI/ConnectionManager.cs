@@ -20,7 +20,7 @@ namespace Cesun.Webservices.UI
 				connectionManager = new ConnectionManager();
 			
 			if(connectionManager.GetOpenedSQLConnection() == null)
-				connectionManager.OpenSqliteConnection();
+				connectionManager.OpenSQLConnection();
 			
 			return connectionManager.GetOpenedSQLConnection();
 		}
@@ -52,7 +52,7 @@ namespace Cesun.Webservices.UI
 			return repository;
 		}
 		
-		void OpenSqliteConnection()
+		void OpenSQLConnection()
 		{
 			sqlConnection = new SqlConnection(ConnectionString());
 			sqlConnection.Open();
